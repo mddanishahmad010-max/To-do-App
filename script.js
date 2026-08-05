@@ -40,8 +40,8 @@ let eleCreate = function () {
     if (editBtn.disabled === false) {
       editInp = document.createElement("input");
       editInp.value = span.innerText;
-      let body = document.querySelector("body");
-      body.appendChild(editInp);
+      let body = document.querySelector(".container");
+      body.prepend(editInp);
       editBtn.disabled = true;
       editInp.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
