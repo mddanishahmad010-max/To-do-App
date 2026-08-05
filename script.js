@@ -30,9 +30,27 @@ let eleCreate = function () {
   let editBtn = document.createElement("button");
   editBtn.innerHTML = `<i class="fa-solid fa-pen"></i>`;
   item.appendChild(editBtn);
-  editBtn.addEventListener("click", function () {
-    console.log("hello"); //iska logic likhna hai
+  editBtn.addEventListener("click", function (event) {
+    edit();
   });
+  //edit
+  function edit() {
+    //ek edit btn ko click kar rahe hai aur uske baad dusre button ko click kar rahe hai to dono ka edit karne ka option open ho raha hai 1 ka open hone wala logic likhna hai
+    if (editBtn.disabled === false) {
+      let editInp = document.createElement("input");
+      editInp.value = span.innerText;
+      let body = document.querySelector("body");
+      body.appendChild(editInp);
+      editBtn.disabled = true;
+      editInp.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          span.innerText = editInp.value;
+          editInp.remove();
+          editBtn.disabled = false;
+        }
+      });
+    }
+  }
   let delBtn = document.createElement("button");
   delBtn.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
   item.appendChild(delBtn);
