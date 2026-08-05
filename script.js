@@ -9,6 +9,7 @@ btn.addEventListener("click", function () {
   }
 });
 let eleCreate = function () {
+  let editInp;
   let item = document.createElement("li");
   let checkbox = document.createElement("input");
   checkbox.type = "checkbox";
@@ -37,7 +38,7 @@ let eleCreate = function () {
   function edit() {
     //ek edit btn ko click kar rahe hai aur uske baad dusre button ko click kar rahe hai to dono ka edit karne ka option open ho raha hai 1 ka open hone wala logic likhna hai
     if (editBtn.disabled === false) {
-      let editInp = document.createElement("input");
+      editInp = document.createElement("input");
       editInp.value = span.innerText;
       let body = document.querySelector("body");
       body.appendChild(editInp);
@@ -52,10 +53,13 @@ let eleCreate = function () {
     }
   }
   let delBtn = document.createElement("button");
-  delBtn.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+  delBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
   item.appendChild(delBtn);
   delBtn.addEventListener("click", function () {
     item.remove();
+    if (editInp) {
+      editInp.remove();
+    }
   });
   /*checkbox feature*/
   checkbox.addEventListener("change", function () {
