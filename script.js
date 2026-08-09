@@ -1,19 +1,14 @@
-let taskArr = [];
 let inp = document.querySelector("input");
 let btn = document.querySelector("#btn");
 let list = document.querySelector("ul");
 let currentEditInp = null;
 let currentEditBtn = null;
 let currentEditIcon = null;
-let taskNum = 0;
 btn.addEventListener("click", function () {
   if (inp.value === "") {
     emptyVal();
   } else {
     eleCreate();
-    //task badne ghatne wala ko bhi likhna hai
-    taskNum += 1;
-    console.log(taskNum);
     let keep = document.querySelector(".keep");
     keep.append(taskNum);
   }
@@ -27,8 +22,6 @@ let eleCreate = function () {
   let span = document.createElement("span");
   span.innerText = inp.value;
   inp.value = "";
-  taskArr.push(span.innerText);
-  console.log(taskArr);
   span.addEventListener("click", function () {
     if (checkbox.checked === false) {
       checkbox.checked = true;
@@ -107,8 +100,6 @@ inp.addEventListener("keydown", function (event) {
       emptyVal();
     } else {
       eleCreate();
-      taskNum += 1;
-      console.log(taskNum);
       let keep = document.querySelector(".keep");
       keep.append(taskNum);
     }
