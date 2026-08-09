@@ -4,13 +4,13 @@ let list = document.querySelector("ul");
 let currentEditInp = null;
 let currentEditBtn = null;
 let currentEditIcon = null;
+let task = document.querySelector(".task");
+let taskArr = [];
 btn.addEventListener("click", function () {
   if (inp.value === "") {
     emptyVal();
   } else {
     eleCreate();
-    let keep = document.querySelector(".keep");
-    keep.append(taskNum);
   }
 });
 let eleCreate = function () {
@@ -21,6 +21,9 @@ let eleCreate = function () {
   checkbox.type = "checkbox";
   let span = document.createElement("span");
   span.innerText = inp.value;
+  taskArr.push(span.innerText);
+  console.log(taskArr);
+  task.innerText = taskArr.length;
   inp.value = "";
   span.addEventListener("click", function () {
     if (checkbox.checked === false) {
@@ -76,6 +79,12 @@ let eleCreate = function () {
   item.appendChild(delBtn);
   delBtn.addEventListener("click", function () {
     item.remove();
+    let ind = taskArr.indexOf(span.innerText);
+    taskArr.splice(ind, 1);
+    task.innerText = taskArr.length;
+    if (taskArr.length === 0) {
+      task.style.display = "none";
+    }
     if (editInp) {
       editInp.remove();
       btnEdit.remove();
@@ -100,8 +109,6 @@ inp.addEventListener("keydown", function (event) {
       emptyVal();
     } else {
       eleCreate();
-      let keep = document.querySelector(".keep");
-      keep.append(taskNum);
     }
   }
 });
