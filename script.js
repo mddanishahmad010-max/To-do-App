@@ -5,6 +5,8 @@ let currentEditInp = null;
 let currentEditBtn = null;
 let currentEditIcon = null;
 let task = document.querySelector(".task");
+let taskCom = document.querySelector(".task-completed");
+let taskCompleted = 0;
 let taskArr = [];
 btn.addEventListener("click", function () {
   if (inp.value === "") {
@@ -29,9 +31,13 @@ let eleCreate = function () {
     if (checkbox.checked === false) {
       checkbox.checked = true;
       span.style.textDecoration = "line-through";
+      taskCompleted++;
+      taskCom.innerText = taskCompleted;
     } else {
       checkbox.checked = false;
       span.style.textDecoration = "none";
+      taskCompleted--;
+      taskCom.innerText = taskCompleted;
     }
   });
   item.prepend(checkbox);
@@ -42,6 +48,12 @@ let eleCreate = function () {
   item.appendChild(editBtn);
   editBtn.addEventListener("click", function (event) {
     edit();
+    if (checkbox.checked === true) {
+      checkbox.checked = false;
+      span.style.textDecoration = "none";
+      taskCompleted--;
+      taskCom.innerText = taskCompleted;
+    }
   });
   //edit
   function edit() {
@@ -81,9 +93,11 @@ let eleCreate = function () {
     item.remove();
     let ind = taskArr.indexOf(span.innerText);
     taskArr.splice(ind, 1);
+    console.log(taskArr);
     task.innerText = taskArr.length;
-    if (taskArr.length === 0) {
-      task.style.display = "none";
+    if (checkbox.checked === true) {
+      taskCompleted--;
+      taskCom.innerText = taskCompleted;
     }
     if (editInp) {
       editInp.remove();
@@ -94,8 +108,12 @@ let eleCreate = function () {
   checkbox.addEventListener("change", function () {
     if (checkbox.checked === true) {
       span.style.textDecoration = "line-through";
+      taskCompleted++;
+      taskCom.innerText = taskCompleted;
     } else {
       span.style.textDecoration = "none";
+      taskCompleted--;
+      taskCom.innerText = taskCompleted;
     }
   });
 };
