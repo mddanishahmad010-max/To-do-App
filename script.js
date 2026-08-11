@@ -1,3 +1,4 @@
+//task ko edit change karne per array me wo task nahi aa raha hai wo karna hai and ek refresh website ko karne per sab task hat ja raha hai in dono features ko banana hai
 let inp = document.querySelector("input");
 let btn = document.querySelector("#btn");
 let list = document.querySelector("ul");
