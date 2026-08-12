@@ -1,4 +1,3 @@
-//task ko edit change karne per array me wo task nahi aa raha hai wo karna hai and ek refresh website ko karne per sab task hat ja raha hai in dono features ko banana hai
 let inp = document.querySelector("input");
 let btn = document.querySelector("#btn");
 let list = document.querySelector("ul");
@@ -25,7 +24,6 @@ let eleCreate = function () {
   let span = document.createElement("span");
   span.innerText = inp.value;
   taskArr.push(span.innerText);
-  console.log(taskArr);
   task.innerText = taskArr.length;
   inp.value = "";
   span.addEventListener("click", function () {
@@ -94,7 +92,6 @@ let eleCreate = function () {
     item.remove();
     let ind = taskArr.indexOf(span.innerText);
     taskArr.splice(ind, 1);
-    console.log(taskArr);
     task.innerText = taskArr.length;
     if (checkbox.checked === true) {
       taskCompleted--;

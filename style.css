@@ -13,7 +13,7 @@ body {
 .container {
   margin: 1rem 0;
   width: 90%;
-  max-width: 500px;
+  max-width: 400px;
   background-color: red;
 }
 h2 {
@@ -70,10 +70,4 @@ h2 {
 }
 ul {
   list-style-type: none; /* bullet points remove karne ke liye*/
-  width: 90%;
-  margin: 1rem auto;
-  display: flex;
-  background-color: greenyellow;
-  padding: 0.5rem ;
-  border-radius: 1rem;
 }
