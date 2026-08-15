@@ -18,11 +18,21 @@ btn.addEventListener("click", function () {
 let eleCreate = function () {
   let editInp;
   let btnEdit;
+  let itemBox = document.createElement("div");
+  let box1 = document.createElement("div");
+  let box2 = document.createElement("div");
+  box1.classList.add("box1");
+  list.appendChild(itemBox);
+  itemBox.appendChild(box1); //c
+  itemBox.appendChild(box2); //c
+  itemBox.classList.add("itemBox");
   let item = document.createElement("li");
   let checkbox = document.createElement("input");
   checkbox.type = "checkbox";
+  checkbox.classList.add("check");
   let span = document.createElement("span");
   span.innerText = inp.value;
+  span.classList.add("span");
   taskArr.push(span.innerText);
   task.innerText = taskArr.length;
   inp.value = "";
@@ -30,21 +40,24 @@ let eleCreate = function () {
     if (checkbox.checked === false) {
       checkbox.checked = true;
       span.style.textDecoration = "line-through";
+      // checkbox.classList.add("true");
       taskCompleted++;
       taskCom.innerText = taskCompleted;
     } else {
       checkbox.checked = false;
       span.style.textDecoration = "none";
+      // checkbox.classList.add("false");
       taskCompleted--;
       taskCom.innerText = taskCompleted;
     }
   });
-  item.prepend(checkbox);
-  item.appendChild(span);
-  list.appendChild(item);
+  box1.prepend(checkbox);
+  box1.appendChild(span);
+  box1.appendChild(item);
   let editBtn = document.createElement("button");
   editBtn.innerHTML = `<i class="fa-solid fa-pen"></i>`;
-  item.appendChild(editBtn);
+  box2.appendChild(editBtn);
+  editBtn.classList.add("editBtn");
   editBtn.addEventListener("click", function (event) {
     edit();
     if (checkbox.checked === true) {
@@ -69,8 +82,8 @@ let eleCreate = function () {
     editInp.value = span.innerText;
     btnEdit = document.createElement("button");
     btnEdit.innerHTML = '<i class="fa-solid fa-check"></i>';
-    item.appendChild(editInp);
-    item.appendChild(btnEdit);
+    itemBox.appendChild(editInp);
+    itemBox.appendChild(btnEdit);
     editBtn.disabled = true;
     currentEditInp = editInp;
     currentEditBtn = btnEdit;
@@ -87,9 +100,10 @@ let eleCreate = function () {
   }
   let delBtn = document.createElement("button");
   delBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-  item.appendChild(delBtn);
+  box2.appendChild(delBtn);
+  delBtn.classList.add("delBtn");
   delBtn.addEventListener("click", function () {
-    item.remove();
+    itemBox.remove();
     let ind = taskArr.indexOf(span.innerText);
     taskArr.splice(ind, 1);
     task.innerText = taskArr.length;
@@ -106,10 +120,12 @@ let eleCreate = function () {
   checkbox.addEventListener("change", function () {
     if (checkbox.checked === true) {
       span.style.textDecoration = "line-through";
+      // checkbox.classList.add("true");
       taskCompleted++;
       taskCom.innerText = taskCompleted;
     } else {
       span.style.textDecoration = "none";
+      // checkbox.classList.add("false");
       taskCompleted--;
       taskCom.innerText = taskCompleted;
     }
