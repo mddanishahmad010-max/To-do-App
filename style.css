@@ -66,9 +66,8 @@ h2 {
 .addtask #btn {
   border: none;
   border-radius: 50%;
-
-  width: 2rem;
-  padding: 0.2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   color: blue;
 }
 ul {
@@ -95,8 +94,8 @@ ul {
 .editBtn {
   border: none;
   border-radius: 50%;
-  width: 1.7rem;
-  height: 1.7rem;
+  font-size: 0.9rem;
+  padding: 0.35rem;
   background-color: yellow;
   color: white;
   margin-right: 0.3rem;
@@ -104,8 +103,8 @@ ul {
 .delBtn {
   border: none;
   border-radius: 50%;
-  width: 1.7rem;
-  height: 1.7rem;
+  font-size: 0.9rem;
+  padding: 0.35rem;
   background-color: pink;
   color: white;
 }
@@ -120,11 +119,33 @@ ul {
   justify-content: space-between;
   align-items: center;
   margin: 1rem 0;
-  /* border: none; */
   border-radius: 2rem;
 }
 .box1 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.editInp {
+  border: none;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  outline: none;
+  width: 80%;
+}
+.seveEditBtn {
+  border: none;
+  color: brown;
+  font-size: 1rem;
+  padding: 0.35rem;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+}
+.taskCom {
+  text-decoration: 2px line-through #000;
+  color: #000;
+}
+.taskPend {
+  color: #fff;
+  text-decoration: none;
 }

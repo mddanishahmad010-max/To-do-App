@@ -39,14 +39,18 @@ let eleCreate = function () {
   span.addEventListener("click", function () {
     if (checkbox.checked === false) {
       checkbox.checked = true;
-      span.style.textDecoration = "line-through";
-      // checkbox.classList.add("true");
+      // span.style.textDecoration = "2px line-through #000";
+      // span.style.color = "#000";
+      checkbox.style.backgroundColor = "red";
+      span.classList.add("taskCom");
       taskCompleted++;
       taskCom.innerText = taskCompleted;
     } else {
       checkbox.checked = false;
-      span.style.textDecoration = "none";
-      // checkbox.classList.add("false");
+      span.classList.add("taskPend");
+      checkbox.style.backgroundColor = "transparent";
+      // span.style.textDecoration = "none";
+      // span.style.color = "#fff";
       taskCompleted--;
       taskCom.innerText = taskCompleted;
     }
@@ -62,7 +66,10 @@ let eleCreate = function () {
     edit();
     if (checkbox.checked === true) {
       checkbox.checked = false;
-      span.style.textDecoration = "none";
+      span.classList.add("taskPend"); //ye sahi se work nahi kar raha hai isko sahi se work karwana hai aur checkbox tice hone per uska backgrund color badalna chahiye aur checkbox check hone per blach ek baar ho raha hai uske baad nahi ho raha hai
+      // span.style.textDecoration = "none";
+      // span.style.color = "#fff";
+      checkbox.style.backgroundColor = "transparent";
       taskCompleted--;
       taskCom.innerText = taskCompleted;
     }
@@ -82,8 +89,10 @@ let eleCreate = function () {
     editInp.value = span.innerText;
     btnEdit = document.createElement("button");
     btnEdit.innerHTML = '<i class="fa-solid fa-check"></i>';
-    itemBox.appendChild(editInp);
-    itemBox.appendChild(btnEdit);
+    itemBox.insertAdjacentElement("beforebegin", editInp); //appendChild
+    editInp.classList.add("editInp");
+    itemBox.insertAdjacentElement("beforebegin", btnEdit);
+    btnEdit.classList.add("seveEditBtn");
     editBtn.disabled = true;
     currentEditInp = editInp;
     currentEditBtn = btnEdit;
@@ -119,13 +128,18 @@ let eleCreate = function () {
   /*checkbox feature*/
   checkbox.addEventListener("change", function () {
     if (checkbox.checked === true) {
-      span.style.textDecoration = "line-through";
+      // span.style.textDecoration = "2px line-through #000";
+      // span.style.color = "#000";
+      span.classList.add("taskCom");
+      checkbox.style.backgroundColor = "red";
       // checkbox.classList.add("true");
       taskCompleted++;
       taskCom.innerText = taskCompleted;
     } else {
-      span.style.textDecoration = "none";
-      // checkbox.classList.add("false");
+      span.classList.add("taskPend");
+      // span.style.textDecoration = "none";
+      // span.style.color = "#fff"; //isko aur span click karne per jo line throw aa ja raha hai usko css file me kar lena hai
+      checkbox.style.backgroundColor = "transparent";
       taskCompleted--;
       taskCom.innerText = taskCompleted;
     }
@@ -144,3 +158,7 @@ inp.addEventListener("keydown", function (event) {
     }
   }
 });
+//1st task - isme ek checkbox first checked hone per sahi work kar raha hai span ka color black ho raha hai uske baad dobara sahi se work nahi kar raha hai 
+//2nd task - checkbox ko sahi ka tick lagana hai checked hone ke baad 
+//3rd task - toggle button banana hai jaise dark mode light mode 
+//4th task - style karo accha se to do ko aur button ka color shadow ye sab lagao uske baad is project ko end kar dena phir time milne per aur features add karna 
