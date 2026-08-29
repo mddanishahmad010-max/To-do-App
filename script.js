@@ -23,10 +23,15 @@ let eleCreate = function () {
   let box2 = document.createElement("div");
   box1.classList.add("box1");
   list.appendChild(itemBox);
-  itemBox.appendChild(box1); //c
-  itemBox.appendChild(box2); //c
+  itemBox.appendChild(box1);
+  itemBox.appendChild(box2);
   itemBox.classList.add("itemBox");
   let item = document.createElement("li");
+  let checkDiv = document.createElement("div");
+  checkDiv.classList.add("checkdiv");
+  checkDiv.addEventListener("click", () => {
+    check();
+  });
   let checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.classList.add("check");
@@ -37,25 +42,10 @@ let eleCreate = function () {
   task.innerText = taskArr.length;
   inp.value = "";
   span.addEventListener("click", function () {
-    if (checkbox.checked === false) {
-      checkbox.checked = true;
-      // span.style.textDecoration = "2px line-through #000";
-      // span.style.color = "#000";
-      checkbox.style.backgroundColor = "red";
-      span.classList.add("taskCom");
-      taskCompleted++;
-      taskCom.innerText = taskCompleted;
-    } else {
-      checkbox.checked = false;
-      span.classList.add("taskPend");
-      checkbox.style.backgroundColor = "transparent";
-      // span.style.textDecoration = "none";
-      // span.style.color = "#fff";
-      taskCompleted--;
-      taskCom.innerText = taskCompleted;
-    }
+    check();
   });
-  box1.prepend(checkbox);
+  box1.prepend(checkDiv);
+  checkDiv.appendChild(checkbox);
   box1.appendChild(span);
   box1.appendChild(item);
   let editBtn = document.createElement("button");
@@ -65,15 +55,31 @@ let eleCreate = function () {
   editBtn.addEventListener("click", function (event) {
     edit();
     if (checkbox.checked === true) {
+      checkDiv.innerHTML = "";
       checkbox.checked = false;
-      span.classList.add("taskPend"); //ye sahi se work nahi kar raha hai isko sahi se work karwana hai aur checkbox tice hone per uska backgrund color badalna chahiye aur checkbox check hone per blach ek baar ho raha hai uske baad nahi ho raha hai
-      // span.style.textDecoration = "none";
-      // span.style.color = "#fff";
-      checkbox.style.backgroundColor = "transparent";
+      span.classList.add("taskPend");
+      span.classList.remove("taskCom");
       taskCompleted--;
       taskCom.innerText = taskCompleted;
     }
   });
+  function check() {
+    if (checkbox.checked === false) {
+      checkbox.checked = true;
+      checkDiv.innerHTML = `<i class="fa-solid fa-check"></i>`;
+      span.classList.add("taskCom");
+      span.classList.remove("taskPend");
+      taskCompleted++;
+      taskCom.innerText = taskCompleted;
+    } else {
+      checkbox.checked = false;
+      checkDiv.innerHTML = "";
+      span.classList.add("taskPend");
+      span.classList.remove("taskCom");
+      taskCompleted--;
+      taskCom.innerText = taskCompleted;
+    }
+  }
   //edit
   function edit() {
     //is logic ko apne se likhna hai phir se
@@ -89,7 +95,7 @@ let eleCreate = function () {
     editInp.value = span.innerText;
     btnEdit = document.createElement("button");
     btnEdit.innerHTML = '<i class="fa-solid fa-check"></i>';
-    itemBox.insertAdjacentElement("beforebegin", editInp); //appendChild
+    itemBox.insertAdjacentElement("beforebegin", editInp);
     editInp.classList.add("editInp");
     itemBox.insertAdjacentElement("beforebegin", btnEdit);
     btnEdit.classList.add("seveEditBtn");
@@ -125,25 +131,6 @@ let eleCreate = function () {
       btnEdit.remove();
     }
   });
-  /*checkbox feature*/
-  checkbox.addEventListener("change", function () {
-    if (checkbox.checked === true) {
-      // span.style.textDecoration = "2px line-through #000";
-      // span.style.color = "#000";
-      span.classList.add("taskCom");
-      checkbox.style.backgroundColor = "red";
-      // checkbox.classList.add("true");
-      taskCompleted++;
-      taskCom.innerText = taskCompleted;
-    } else {
-      span.classList.add("taskPend");
-      // span.style.textDecoration = "none";
-      // span.style.color = "#fff"; //isko aur span click karne per jo line throw aa ja raha hai usko css file me kar lena hai
-      checkbox.style.backgroundColor = "transparent";
-      taskCompleted--;
-      taskCom.innerText = taskCompleted;
-    }
-  });
 };
 function emptyVal() {
   alert("Please write task in the input box");
@@ -158,7 +145,3 @@ inp.addEventListener("keydown", function (event) {
     }
   }
 });
-//1st task - isme ek checkbox first checked hone per sahi work kar raha hai span ka color black ho raha hai uske baad dobara sahi se work nahi kar raha hai 
-//2nd task - checkbox ko sahi ka tick lagana hai checked hone ke baad 
-//3rd task - toggle button banana hai jaise dark mode light mode 
-//4th task - style karo accha se to do ko aur button ka color shadow ye sab lagao uske baad is project ko end kar dena phir time milne per aur features add karna 
