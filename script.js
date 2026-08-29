@@ -82,7 +82,6 @@ let eleCreate = function () {
   }
   //edit
   function edit() {
-    //is logic ko apne se likhna hai phir se
     if (currentEditInp !== null) {
       currentEditInp.remove();
       currentEditBtn.remove();
