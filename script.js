@@ -69,6 +69,7 @@ let eleCreate = function () {
       checkDiv.innerHTML = `<i class="fa-solid fa-check"></i>`;
       span.classList.add("taskCom");
       span.classList.remove("taskPend");
+      checkDiv.classList.add("compDiv"); //change
       taskCompleted++;
       taskCom.innerText = taskCompleted;
     } else {
@@ -76,6 +77,7 @@ let eleCreate = function () {
       checkDiv.innerHTML = "";
       span.classList.add("taskPend");
       span.classList.remove("taskCom");
+      checkDiv.classList.remove("compDiv");
       taskCompleted--;
       taskCom.innerText = taskCompleted;
     }
@@ -92,6 +94,7 @@ let eleCreate = function () {
     }
     editInp = document.createElement("input");
     editInp.value = span.innerText;
+    checkDiv.classList.remove("compDiv");
     btnEdit = document.createElement("button");
     btnEdit.innerHTML = '<i class="fa-solid fa-check"></i>';
     itemBox.insertAdjacentElement("beforebegin", editInp);
