@@ -9,6 +9,22 @@ let taskCom = document.querySelector(".task-completed");
 let taskCompleted = 0;
 let taskArr = [];
 let body = document.querySelector("body");
+//toggle button
+let toggleBtn = document.querySelector(".toggle");
+let tog = false;
+toggleBtn.addEventListener("click", (event) => {
+  if (tog === true) {
+    // body.style.backgroundColor = "green";
+    body.classList.add("dark");
+    body.classList.remove("light");
+    tog = false;
+  } else {
+    tog = true;
+    // body.style.backgroundColor = "blue";
+    body.classList.add("light");
+    body.classList.remove("dark");
+  }
+});
 btn.addEventListener("click", function () {
   if (inp.value === "") {
     emptyVal();
@@ -135,22 +151,6 @@ let eleCreate = function () {
     }
   });
 };
-//toggle button
-let toggleBtn = document.querySelector(".toggle");
-let tog = false;
-toggleBtn.addEventListener("click", (event) => {
-  if (tog === true) {
-    // body.style.backgroundColor = "green";
-    body.classList.add("dark");
-    body.classList.remove("light");
-    tog = false;
-  } else {
-    tog = true;
-    // body.style.backgroundColor = "blue";
-    body.classList.add("light");
-    body.classList.remove("dark");
-  }
-});
 function emptyVal() {
   alert("Please write task in the input box");
   return;
