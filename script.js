@@ -14,13 +14,11 @@ let toggleBtn = document.querySelector(".toggle");
 let tog = false;
 toggleBtn.addEventListener("click", (event) => {
   if (tog === true) {
-    // body.style.backgroundColor = "green";
     body.classList.add("dark");
     body.classList.remove("light");
     tog = false;
   } else {
     tog = true;
-    // body.style.backgroundColor = "blue";
     body.classList.add("light");
     body.classList.remove("dark");
   }
