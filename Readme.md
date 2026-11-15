@@ -4,15 +4,15 @@ A simple and interactive To-Do List Web Application built using HTML, CSS, and J
 
 ## ✨ Features
 
-• Add new tasks to your to-do list.
-• Edit existing tasks.
-• Delete tasks when they are no longer needed.
-• Mark tasks as completed or pending.
-• Display the total number of tasks.
-• Track the number of completed tasks.
-• Add tasks by pressing the Enter key.
-• Interactive buttons with hover effects.
-• Clean and user-friendly interface.
+- Add new tasks to your to-do list.
+- Edit existing tasks.
+- Delete tasks when they are no longer needed.
+- Mark tasks as completed or pending.
+- Display the total number of tasks.
+- Track the number of completed tasks.
+- Add tasks by pressing the Enter key.
+- Interactive buttons with hover effects.
+- Clean and user-friendly interface.
 
 ## 📸 Project Preview
 
@@ -20,10 +20,10 @@ A simple and interactive To-Do List Web Application built using HTML, CSS, and J
 
 ## 🛠️ Technologies Used
 
-• HTML5 – Used to create the structure of the application.
-• CSS3 – Used for styling, layout, colors, and hover effects.
-• JavaScript – Used to implement task management functionality and DOM manipulation.
-• Font Awesome – Used for icons.
+- HTML5 – Used to create the structure of the application.
+- CSS3 – Used for styling, layout, colors, and hover effects.
+- JavaScript – Used to implement task management functionality and DOM manipulation.
+- Font Awesome – Used for icons.
 
 ## 🚀 Getting Started
 
@@ -49,11 +49,11 @@ That's it! Your To-Do App is ready to use.
 
 ## 🔮 Future Improvements
 
-• Implement a proper Dark and Light Theme.
-• Save tasks using Local Storage.
-• Add task filtering (All, Completed, Pending).
-• Improve the user interface and animations.
-• Add task deadlines and priorities.
+- Implement a proper Dark and Light Theme.
+- Save tasks using Local Storage.
+- Add task filtering (All, Completed, Pending).
+- Improve the user interface and animations.
+- Add task deadlines and priorities.
 
 ## 👨‍💻 Author
 
